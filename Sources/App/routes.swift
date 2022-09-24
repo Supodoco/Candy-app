@@ -6,9 +6,6 @@ func routes(_ app: Application) throws {
         try await req.view.render("index", ["title": "Hello Vapor!"])
     }
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
+    try app.register(collection: CatalogItemController())
 
-    try app.register(collection: TodoController())
 }
